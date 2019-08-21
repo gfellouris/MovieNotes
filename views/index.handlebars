@@ -1,0 +1,61 @@
+<div class="jumbotron text-center">
+    <div class="overlay"></div>
+    <div class="background-image">
+        <div class="caption">
+            <h1>Movie Note taker!</h1>
+            <p>Keep notes on your favorite movies...</p>
+        </div>
+    </div>
+</div>
+
+<div class="containerBackground">
+
+    <div class="container">
+
+        <div class="card">
+            <div class="card-header">Search a movie title to scrape:</div>
+
+            <div class="card-body">
+                <form class="search-form">
+                    <div class="form-group">
+                        <label for="movieSearch">Movie Search:</label>
+                        <input type="text" id="movie-search" name="name">
+                    </div>
+            </div>
+
+            <div class="card-footer">
+                <button class="btn btn-primary" type="submit">Search Movie</button>
+            </div>
+            </form>
+
+        </div>
+
+
+        <div class="card">
+            <div class="card-header">Movie List</div>
+            <div class="card-body">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Movie</th>
+                            <th>Title</th>
+                            <th>Overview</th>
+                            <th>Release Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each movies}}
+                        <tr>
+                            <td><a href=https://www.themoviedb.org{{ link }}> <img src={{ image }}></a></td>
+                            <td>{{ title }}</td>
+                            <td>{{ overview }}</td>
+                            <td>{{ release_date }}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
