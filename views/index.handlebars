@@ -2,8 +2,11 @@
     <div class="overlay"></div>
     <div class="background-image">
         <div class="caption">
-            <h1>Movie Note taker!</h1>
+            <h1>Movie Note-Taker!</h1>
             <p>Keep notes on your favorite movies...</p>
+            <div class="container">
+            <div id="message" class="alert alert-success" role="alert">Welcome to Movie Note Taker - search for a movie...</div>
+            </div>
         </div>
     </div>
 </div>
@@ -42,6 +45,7 @@
                             <th>Title</th>
                             <th>Overview</th>
                             <th>Release Date</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,6 +55,7 @@
                             <td>{{ title }}</td>
                             <td>{{ overview }}</td>
                             <td>{{ release_date }}</td>
+                            <td><i id={{ _id }} class="fas fa-trash-alt float-right text-danger"></i></td>
                         </tr>
                         {{/each}}
                     </tbody>

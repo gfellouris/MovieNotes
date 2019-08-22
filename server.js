@@ -32,15 +32,26 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-mongoose.connect("mongodb://localhost/movieScrape", { useNewUrlParser: true });
+var ObjectID = require('mongodb').ObjectID; 
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/movieScrape";
+mongoose.connect(MONGODB_URI);
+// mongoose.connect("mongodb://localhost/movieScrape", { useNewUrlParser: true });
 
 // Functions
-
+// Used by multiple routes to diplay the movies from mongodb
 function displayMovies(response) {
   db.Movie.find({}).then(function(dbMovie) {
     response.render("index", { movies: dbMovie });
   });
 }
+
+app.get("/api/delete/:id", function(req, res) {
+  // var objId = req.params.id;
+  let objId = ObjectID(req.params.id);
+  db.Movie.deleteOne({"_id": objId}).then(function(dbMovie) {
+    res.send(dbMovie);
+  });
+});
 
 app.get("/home", function(req, res) {
   // res.send("Home Page");
