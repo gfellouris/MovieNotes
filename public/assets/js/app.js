@@ -62,6 +62,7 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
   $('#myModal').modal('hide');
+  location.reload();
 });
 
 // Whenever someone clicks a p tag
@@ -81,13 +82,13 @@ $(document).on("click", ".addnote", function() {
     .then(function(data) {
       console.log(data);
       // The title of the article
-      $("#notes").append("<h2>" + data.title + "</h2>");
+      $("#notes").append("<h6>" + data.title + "</h6>");
       $("#notes").append("<hr>");
       // An input to enter a new title
-      $("#notes").append("<input type='text' id='titleinput' name='title' placeholder='Enter title for note...'>");
+      $("#notes").append("<input class='form-control' type='text' id='titleinput' name='title' placeholder='Enter title for note...'>");
       $("#notes").append("<hr>");
       // A textarea to add a new note body
-      $("#notes").append("<textarea type='text' id='bodyinput' name='body' placeholder='Enter body of note...'></textarea>");
+      $("#notes").append("<textarea class='form-control' type='text' id='bodyinput' name='body' placeholder='Enter body of note...'></textarea>");
       $("#notes").append("<hr>");
       // A button to submit a new note, with the id of the article saved to it
       $("#notes").append("<button class='btn btn-primary' type='button' data-id='" + data._id + "' id='savenote'>Save Note</button>");

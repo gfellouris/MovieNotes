@@ -53,7 +53,7 @@ app.get("/api/delete/:id", function(req, res) {
   });
 });
 
-app.get("/home", function(req, res) {
+app.get("/index", function(req, res) {
   // res.send("Home Page");
   displayMovies(res);
 });
