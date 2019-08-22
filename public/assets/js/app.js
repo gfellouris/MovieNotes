@@ -2,7 +2,6 @@ function showMsg(msg, css) {
   $("#message").html(msg);
   $("#message").attr("class", css);
   $("#message").show();
-  
 }
 function hideMsg() {
   $("#message").empty();
@@ -26,9 +25,9 @@ $(document).on("click", ".fa-trash-alt", function() {
   $.get("/api/delete/" + delId, function(data) {
     console.log(data);
     if (data) {
-      showMsg("Movie " + delId + " deleted.","alert alert-danger");
+      showMsg("Movie " + delId + " deleted.", "alert alert-danger");
     } else {
-      showMsg("Movie " + delId + " not found.","alert alert-danger");
+      showMsg("Movie " + delId + " not found.", "alert alert-danger");
     }
     location.reload();
   });
@@ -61,7 +60,7 @@ $(document).on("click", "#savenote", function() {
   // Also, remove the values entered in the input and textarea for note entry
   $("#titleinput").val("");
   $("#bodyinput").val("");
-  $('#myModal').modal('hide');
+  $("#myModal").modal("hide");
   location.reload();
 });
 
@@ -69,7 +68,7 @@ $(document).on("click", "#savenote", function() {
 $(document).on("click", ".addnote", function() {
   // Empty the notes from the note section
   $("#notes").empty();
-  $('#myModal').modal('show');
+  $("#myModal").modal("show");
   // Save the id from the p tag
   var thisId = $(this).attr("data-id");
 
@@ -85,13 +84,21 @@ $(document).on("click", ".addnote", function() {
       $("#notes").append("<h6>" + data.title + "</h6>");
       $("#notes").append("<hr>");
       // An input to enter a new title
-      $("#notes").append("<input class='form-control' type='text' id='titleinput' name='title' placeholder='Enter title for note...'>");
+      $("#notes").append(
+        "<input class='form-control' type='text' id='titleinput' name='title' placeholder='Enter title for note...'>"
+      );
       $("#notes").append("<hr>");
       // A textarea to add a new note body
-      $("#notes").append("<textarea class='form-control' type='text' id='bodyinput' name='body' placeholder='Enter body of note...'></textarea>");
+      $("#notes").append(
+        "<textarea class='form-control' type='text' id='bodyinput' name='body' placeholder='Enter body of note...'></textarea>"
+      );
       $("#notes").append("<hr>");
       // A button to submit a new note, with the id of the article saved to it
-      $("#notes").append("<button class='btn btn-primary' type='button' data-id='" + data._id + "' id='savenote'>Save Note</button>");
+      $("#notes").append(
+        "<button class='btn btn-primary' type='button' data-id='" +
+          data._id +
+          "' id='savenote'>Save Note</button>"
+      );
 
       // If there's a note in the article
       if (data.note) {

@@ -33,7 +33,7 @@ router.get("/api/delete/:id", function(req, res) {
   });
 });
 
-router.get("/index", function(req, res) {
+router.get("/", function(req, res) {
   // res.send("Home Page");
   displayMovies(res);
 });
